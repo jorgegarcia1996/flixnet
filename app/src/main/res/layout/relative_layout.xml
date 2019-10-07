@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/first"
+        android:layout_width="80dp"
+        android:layout_height="160dp"
+        android:gravity="center"
+        android:text="1st"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:background="#33CA39"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"/>
+
+    <TextView
+        android:id="@+id/second"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/first"
+        android:gravity="center"
+        android:text="2st"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:background="#33CAB3"/>
+
+    <TextView
+        android:id="@+id/third"
+        android:layout_width="80dp"
+        android:layout_height="160dp"
+        android:layout_alignParentRight="true"
+        android:layout_above="@id/second"
+        android:gravity="center"
+        android:text="3st"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:background="#9033CA"/>
+
+    <TextView
+        android:id="@+id/fourth"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@id/third"
+        android:gravity="center"
+        android:text="4st"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:background="#CA3333"/>
+
+    <TextView
+        android:id="@+id/fifth"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_above="@id/second"
+        android:layout_toLeftOf="@id/third"
+        android:gravity="center"
+        android:text="5st"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:background="#0D24FF"/>
+
+    <TextView
+        android:id="@+id/sixth"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_above="@id/second"
+        android:layout_toRightOf="@id/first"
+        android:layout_toLeftOf="@id/fifth"
+        android:gravity="center"
+        android:text="6st"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:background="#CEC600"/>
+</RelativeLayout>
