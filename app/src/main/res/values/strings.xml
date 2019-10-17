@@ -1,3 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name" translatable="false">FlixNet</string>
+    <string name="hint_email" translatable="false">email@example.com</string>
+    <string name="hint_password">Password</string>
+    <string name="login_button">Login</string>
+    <string name="register_button">Register</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_lastName">Last Name</string>
+    <string name="hint_repeatPassword">Repeat Password</string>
+
+    <!-- Nacionalidades -->
+    <string-array name="arr_paises">
+        <item>España</item>
+        <item>Francia</item>
+        <item>Reino Unido</item>
+        <item>Japón</item>
+        <item>Italia</item>
+    </string-array>
+    <string name="lab_ok">OK</string>
+    <string name="cancel_button">Cancel</string>
 
 </resources>

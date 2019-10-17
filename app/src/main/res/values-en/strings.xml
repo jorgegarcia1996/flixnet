@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- App name -->
-    <string name="app_name">flixnet</string>
-
-    <!-- Hints for Login -->
-    <string name="hint_email">email@example.com</string>
-    <string name="hint_password">Password</string>
-</resources>

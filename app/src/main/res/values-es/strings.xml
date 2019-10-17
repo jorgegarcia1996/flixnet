@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Nombre de la aplicación -->
-    <string name="app_name">flixnet</string>
-
-    <!-- hints para el login -->
-    <string name="hint_email">email@example.com</string>
+    <!-- Idioma: español -->
     <string name="hint_password">Contraseña</string>
+    <string name="login_button">Entrar</string>
+    <string name="register_button">Registrarse</string>
+    <string name="hint_name">Nombre</string>
+    <string name="hint_lastName">Apellidos</string>
+    <string name="hint_repeatPassword">Repita la Contraseña</string>
+    <string name="lab_ok">Aceptar</string>
+    <string name="cancel_button">Cancelar</string>
 </resources>
