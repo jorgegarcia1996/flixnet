@@ -1,13 +1,22 @@
 package com.jgm.flixnet;
 
-public class Usuario {
+import java.io.Serializable;
 
-    private String nombre, apellidos, avatar, nacionalidad;
+public class Usuario implements Serializable {
+
+    private String nombre, apellidos, email, nacionalidad;
 
     //CONSTRUCTORES
     public Usuario(String nombre, String apellidos) {
         this.nombre = nombre;
         this.apellidos = apellidos;
+    }
+
+    public Usuario(String email, String nombre, String apellidos, String nacionalidad) {
+        this.email = email;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.nacionalidad = nacionalidad;
     }
 
     public Usuario() {
@@ -30,12 +39,12 @@ public class Usuario {
         this.apellidos = apellidos;
     }
 
-    public String getAvatar() {
-        return avatar;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getNacionalidad() {
