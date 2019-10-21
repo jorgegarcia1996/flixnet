@@ -41,6 +41,9 @@ public class LoginActivity extends AppCompatActivity {
         //instancia de firebaseAuth y firebaseDatabase
         fbAuth = FirebaseAuth.getInstance();
 
+        //Mostramos el icono de la app
+        getSupportActionBar().setIcon(R.mipmap.ic_launcher_round);
+
 
         //Enlazar los botones
         btnLogin = findViewById(R.id.loginButton);
