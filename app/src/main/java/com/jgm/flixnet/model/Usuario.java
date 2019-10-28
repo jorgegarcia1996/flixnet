@@ -1,4 +1,4 @@
-package com.jgm.flixnet;
+package com.jgm.flixnet.model;
 
 import java.io.Serializable;
 

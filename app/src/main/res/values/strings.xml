@@ -20,5 +20,6 @@
     <string name="lab_ok">OK</string>
     <string name="cancel_button">Cancel</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="label_logout">Log out</string>
 
 </resources>

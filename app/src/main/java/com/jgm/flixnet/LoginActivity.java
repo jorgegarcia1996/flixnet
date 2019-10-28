@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.jgm.flixnet.model.Usuario;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -42,7 +43,13 @@ public class LoginActivity extends AppCompatActivity {
         fbAuth = FirebaseAuth.getInstance();
 
         //Mostramos el icono de la app
+        //API < 25
+        //getSupportActionBar().setIcon(R.mipmap.ic_launcher);
+
+        //API >= 25
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.ic_launcher_round);
+
 
 
         //Enlazar los botones
