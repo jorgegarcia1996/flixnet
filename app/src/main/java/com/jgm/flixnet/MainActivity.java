@@ -2,25 +2,38 @@ package com.jgm.flixnet;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.jgm.flixnet.adapter.SeriesAdapter;
+import com.jgm.flixnet.api.ApiClient;
+import com.jgm.flixnet.model.Serie;
 import com.jgm.flixnet.model.Usuario;
 import com.jgm.flixnet.service.ApiService;
 
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MainActivity extends AppCompatActivity {
 
-    private final String URL_API_FLIXNET = "https://ajsb.000webhostapp.com/public/";
+    private final String URL_BASE_FLIXNET = "https://ajsb.000webhostapp.com/public/";
 
-    private TextView text;
+    private RecyclerView recycler;
     private FirebaseAuth fbAuth;
 
-    private ApiService apiService;
+    private ApiService service;
+    private List<Serie> listaSeries = null;
+    private SeriesAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +42,13 @@ public class MainActivity extends AppCompatActivity {
 
         fbAuth = FirebaseAuth.getInstance();
 
+        recycler = findViewById(R.id.mainListShows);
+
         //Instancia del cliente de la API
-        apiService = ApiClient.getClient(URL_API_FLIXNET);
+        service = ApiClient.getService(URL_BASE_FLIXNET);
+
+        loadShows();
+
 
 
         //Recopilar la información de la intención
@@ -43,9 +61,6 @@ public class MainActivity extends AppCompatActivity {
         //Recuperar los datos cuando se pasan individualmente
         //String nombre = bundle.getString("nombre");
         //String apellidos = bundle.getString("apellidos");
-
-        text = findViewById(R.id.textoMain);
-        text.setText("Hola " + usuario.getNombre() + " " + usuario.getApellidos() + ".");
 
     }
 
@@ -71,5 +86,32 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void loadShows() {
+        //#############################################################################################
+
+        //Una forma de acceder a los datos de la api de forma asíncrona
+        service.getSeries().enqueue(new Callback<List<Serie>>() {
+            @Override
+            public void onResponse(Call<List<Serie>> call, Response<List<Serie>> response) {
+                if (response.isSuccessful()) {
+                    listaSeries = response.body();
+                    //Proceso para mostrar los datos
+                    adapter = new SeriesAdapter(listaSeries);
+
+
+                    Log.i("flixnet", "Las series se han cargado.");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Serie>> call, Throwable t) {
+                Log.i("flixnet", "FALLO");
+            }
+        });
+
+
+        //#############################################################################################
     }
 }

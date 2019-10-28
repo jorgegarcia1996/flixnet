@@ -17,15 +17,20 @@ public class Serie {
     private String genero;
 
     @Expose
-    @SerializedName("argumento")
+    @SerializedName("sinopsis")
     private String argumento;
 
     @Expose
-    @SerializedName("estreno")
+    @SerializedName("cartel")
+    private String cartel;
+
+
+    @Expose
+    @SerializedName("fecha_estreno")
     private String estreno;
 
     @Expose
-    @SerializedName("puntuacion")
+    @SerializedName("punt_imdb")
     private float puntuacion;
 
     public Serie() {
@@ -99,6 +104,20 @@ public class Serie {
      */
     public void setEstreno(String estreno) {
         this.estreno = estreno;
+    }
+
+    /**
+    * @return
+    */
+    public String getCartel() {
+        return cartel;
+    }
+
+    /**
+     * @param cartel
+     */
+    public void setCartel(String cartel) {
+        this.cartel = cartel;
     }
 
     /**
