@@ -2,6 +2,7 @@ package com.jgm.flixnet;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -9,7 +10,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.jgm.flixnet.adapter.SeriesAdapter;
@@ -18,6 +21,7 @@ import com.jgm.flixnet.model.Serie;
 import com.jgm.flixnet.model.Usuario;
 import com.jgm.flixnet.service.ApiService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -32,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth fbAuth;
 
     private ApiService service;
-    private List<Serie> listaSeries = null;
+    private List<Serie> listaSeries;
     private SeriesAdapter adapter;
 
     @Override
@@ -42,13 +46,35 @@ public class MainActivity extends AppCompatActivity {
 
         fbAuth = FirebaseAuth.getInstance();
 
+        //Creamos el adaptador para la lista de series
+        listaSeries = new ArrayList<Serie>();
+        adapter = new SeriesAdapter(this, new SeriesAdapter.SeriesListenerInterface() {
+            @Override
+            public void onSerieClickListener(Serie item) {
+                Toast.makeText(getApplicationContext(), "Se ha pulsado en" + item.getTitulo(), Toast.LENGTH_LONG);
+
+            }
+        } /*new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Se ha pulsado en un elemento", Toast.LENGTH_LONG);
+            }
+        }*/);
+
+        //Instanciamos el adaptador
         recycler = findViewById(R.id.mainListShows);
+
+        //Definimos el layout del recycler
+        recycler.setLayoutManager(new LinearLayoutManager(this));
+
+        //especifocamos el adaptador para el recycler
+        recycler.setAdapter(adapter);
 
         //Instancia del cliente de la API
         service = ApiClient.getService(URL_BASE_FLIXNET);
 
+        //Método definido más abajo
         loadShows();
-
 
 
         //Recopilar la información de la intención
@@ -98,10 +124,10 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     listaSeries = response.body();
                     //Proceso para mostrar los datos
-                    adapter = new SeriesAdapter(listaSeries);
-
-
                     Log.i("flixnet", "Las series se han cargado.");
+
+                    //Notificar los cambios en los datos
+                    adapter.setData(listaSeries);
                 }
             }
 

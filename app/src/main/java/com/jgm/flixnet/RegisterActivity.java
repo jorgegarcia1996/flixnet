@@ -50,30 +50,6 @@ public class RegisterActivity extends AppCompatActivity {
         confPass = findViewById(R.id.confirmPassword);
         nacionalidad = findViewById(R.id.nacionalidad);
 
-        //Listener para el spinner
-        /*nacionalidad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });*/
-
-        //Agregar elementos al spinner de forma programática, para ello se debe eliminar la propiedad correspondiente el layout
-        /*List<String> paises = new ArrayList<String>(){{
-            add("España");
-            add("Francia");
-            add("Japón");
-            add("Alemania");
-            add("Italia");
-        }};
-        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, paises);
-        nacionalidad.setAdapter(adaptador);*/
-
 
         //Listener para el botón de confirmar registro
         btnReg.setOnClickListener(new View.OnClickListener() {
