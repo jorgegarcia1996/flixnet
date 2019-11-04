@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         adapter = new SeriesAdapter(this, new SeriesAdapter.SeriesListenerInterface() {
             @Override
             public void onSerieClickListener(Serie item) {
-                Toast.makeText(getApplicationContext(), "Se ha pulsado en" + item.getTitulo(), Toast.LENGTH_LONG);
+                Toast.makeText(getApplicationContext(), "Se ha pulsado en" + item.getTitulo(), Toast.LENGTH_LONG).show();
 
             }
         } /*new View.OnClickListener() {
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Instancia del cliente de la API
         service = ApiClient.getService(URL_BASE_FLIXNET);
+        registerForContextMenu(recycler);
 
         //Método definido más abajo
         loadShows();
@@ -90,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //Menú principal
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -97,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    //Opciones del menú principal
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
@@ -112,6 +116,32 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    //Menú contextual
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        getMenuInflater().inflate(R.menu.menu_ppal_context, menu);
+    }
+
+    //Opciones del menú contextual
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        Serie serie;
+
+        switch(item.getItemId()) {
+            case R.id.ctxAdd:
+                serie = listaSeries.get(adapter.getIndex());
+                Toast.makeText(this, "Añadido a favoritos: " + serie.getTitulo(), Toast.LENGTH_LONG).show();
+                break;
+            case R.id.ctxDel:
+                serie = listaSeries.get(adapter.getIndex());
+                Toast.makeText(this, "Quitado de favoritos: " + serie.getTitulo(), Toast.LENGTH_LONG).show();
+                break;
+        }
+        return super.onContextItemSelected(item);
+
     }
 
     private void loadShows() {

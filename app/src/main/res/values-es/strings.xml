@@ -10,4 +10,6 @@
     <string name="lab_ok">Aceptar</string>
     <string name="cancel_button">Cancelar</string>
     <string name="label_logout">Salir</string>
+    <string name="label_addFavs">Añadir a Favoritos</string>
+    <string name="label_delFavs">Quitar de Favoritos</string>
 </resources>

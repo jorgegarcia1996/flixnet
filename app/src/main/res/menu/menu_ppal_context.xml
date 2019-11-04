@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/ctxAdd" android:title="@string/label_addFavs" />
+    <item android:id="@+id/ctxDel" android:title="@string/label_delFavs" />
+</menu>

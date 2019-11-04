@@ -19,7 +19,9 @@
     </string-array>
     <string name="lab_ok">OK</string>
     <string name="cancel_button">Cancel</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="label_logout">Log out</string>
+    <string name="label_addFavs">Add Favorites</string>
+    <string name="label_delFavs">Delete Favorite</string>
 
 </resources>
