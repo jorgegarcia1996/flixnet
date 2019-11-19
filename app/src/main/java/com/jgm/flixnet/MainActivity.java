@@ -145,7 +145,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadShows() {
-        //#############################################################################################
 
         //Una forma de acceder a los datos de la api de forma asíncrona
         service.getSeries().enqueue(new Callback<List<Serie>>() {
@@ -166,8 +165,5 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("flixnet", "FALLO");
             }
         });
-
-
-        //#############################################################################################
     }
 }
